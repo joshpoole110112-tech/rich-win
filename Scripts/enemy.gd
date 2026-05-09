@@ -25,7 +25,7 @@ enum States{
 }
 var current_state = States.WANDER
 
-func  _ready() -> void:
+func _ready() -> void:
 	left_bounds = self.position + Vector2(-125,0)
 	right_bounds = self.position + Vector2(125,0)
 
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			immuaity.start()
 	if can_be_hit:
 		if Input.is_action_just_pressed("Attack"):
-			HP -= 20
+			HP -= Global.Player_Damage
 
 func look_for_player():
 	if ray_cast.is_colliding():
