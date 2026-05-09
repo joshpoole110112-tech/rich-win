@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 		animated.play("Idle")
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("Attack"):
+	if Input.is_action_just_pressed("Attack"):
 		is_attacking = true
 
 func _on_collect_box_area_entered(_area: Area2D) -> void:

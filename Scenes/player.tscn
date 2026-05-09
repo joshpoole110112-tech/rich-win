@@ -135,9 +135,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Hit_Box" unique_id=242161883]
 shape = SubResource("RectangleShape2D_fkybt")
 
-[node name="Immuaity" type="Timer" parent="." unique_id=2043003519]
-one_shot = true
-
 [node name="Player_Attack_Box" type="Area2D" parent="." unique_id=2044172679]
 collision_layer = 32
 collision_mask = 0
@@ -149,11 +146,10 @@ debug_color = Color(0.5137255, 0, 0.12156863, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1997617906]
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"Attack left"
+animation = &"Idle"
 
 [node name="Att_time" type="Timer" parent="." unique_id=1740578554]
 wait_time = 0.25
 
 [connection signal="area_entered" from="Collect_Box" to="." method="_on_collect_box_area_entered"]
-[connection signal="timeout" from="Immuaity" to="." method="_on_immuaity_timeout"]
 [connection signal="timeout" from="Att_time" to="." method="_on_att_time_timeout"]

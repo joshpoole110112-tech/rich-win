@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var immuaity: Timer = $Immuaity
 @onready var hp_bar: ProgressBar = $HpBar
+@onready var player_att_cooldown: Timer = $Player_att_cooldown
 
 var Hit: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -31,6 +32,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	hp_bar.value = HP
+	player_att_cooldown.wait_time = Global.Player_Cooldown
 	handle_gravity(delta)
 	handle_movement(delta)
 	change_direction()
@@ -41,7 +43,9 @@ func _physics_process(delta: float) -> void:
 			immuaity.start()
 	if can_be_hit:
 		if Input.is_action_just_pressed("Attack"):
-			HP -= Global.Player_Damage
+			if player_att_cooldown.time_left <= 0:
+				HP -= Global.Player_Damage
+				player_att_cooldown.start()
 
 func look_for_player():
 	if ray_cast.is_colliding():
