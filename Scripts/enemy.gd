@@ -62,14 +62,14 @@ func change_direction():
 			if self.position.x <= right_bounds.x:
 				direction = Vector2(1,0)
 			else:
-				sprite.flip_h = true
-				ray_cast.target_position = Vector2(125,0)
-		else:
-			if self.position.x <= left_bounds.x:
-				direction = Vector2(-1,0)
-			else:
 				sprite.flip_h = false
 				ray_cast.target_position = Vector2(-125,0)
+		else:
+			if self.position.x >= left_bounds.x:
+				direction = Vector2(-1,0)
+			else:
+				sprite.flip_h = true
+				ray_cast.target_position = Vector2(125,0)
 	else:
 		direction = (player.position - self.position).normalized()
 		direction = sign(direction)
