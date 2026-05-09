@@ -2,9 +2,25 @@
 
 [ext_resource type="Script" uid="uid://mu67gd0dkgqx" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://d3kldyntw3otm" path="res://Assets/Enemy.png" id="1_hghv2"]
+[ext_resource type="Texture2D" uid="uid://byx7rj45ujfxa" path="res://Assets/HealthBar_BG.png" id="3_287tu"]
+[ext_resource type="Texture2D" uid="uid://b23nos16jn5hj" path="res://Assets/HealthBar_p.png" id="4_0830c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hghv2"]
 radius = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghaa6"]
+texture = ExtResource("3_287tu")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dp5w"]
+texture = ExtResource("4_0830c")
+axis_stretch_horizontal = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_287tu"]
+radius = 14.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2030679967]
 collision_layer = 8
@@ -17,11 +33,36 @@ texture = ExtResource("1_hghv2")
 target_position = Vector2(-125, 1)
 collision_mask = 2
 
-[node name="Enemy_Hit_Box" type="CollisionShape2D" parent="." unique_id=695382591]
+[node name="Enemy_Collision_Box" type="CollisionShape2D" parent="." unique_id=695382591]
 shape = SubResource("CircleShape2D_hghv2")
 
 [node name="Timer" type="Timer" parent="." unique_id=2143063011]
 wait_time = 3.0
 one_shot = true
 
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1296310957]
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 16.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxTexture_ghaa6")
+theme_override_styles/fill = SubResource("StyleBoxTexture_1dp5w")
+value = 50.0
+show_percentage = false
+
+[node name="Enemy_Attack_Box" type="Area2D" parent="." unique_id=857476754]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Attack_Box" unique_id=518843592]
+z_index = -1
+shape = SubResource("CircleShape2D_287tu")
+debug_color = Color(0.51477206, 0, 0.120844565, 0.41960785)
+
+[node name="Immuaity" type="Timer" parent="." unique_id=500807501]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Enemy_Attack_Box" to="." method="_on_enemy_attack_box_area_entered"]
+[connection signal="area_exited" from="Enemy_Attack_Box" to="." method="_on_enemy_attack_box_area_exited"]

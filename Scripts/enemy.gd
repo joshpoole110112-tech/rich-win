@@ -8,7 +8,9 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var ray_cast: RayCast2D = $Sprite2D/RayCast2D
 @onready var timer: Timer = $Timer
+@onready var immuaity: Timer = $Immuaity
 
+var Hit: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2
 var right_bounds: Vector2
@@ -29,6 +31,10 @@ func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	change_direction()
 	look_for_player()
+	if Hit:
+		if immuaity.time_left <= 0:
+			Global.Player_HP -= 20
+			immuaity.start()
 
 func look_for_player():
 	if ray_cast.is_colliding():
@@ -87,3 +93,11 @@ func handle_gravity(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	current_state = States.WANDER
+
+#Tack damage
+func _on_enemy_attack_box_area_entered(_area: Area2D) -> void:
+	Hit = true
+	print("t")
+func _on_enemy_attack_box_area_exited(_area: Area2D) -> void:
+	Hit = false
+	print("f")

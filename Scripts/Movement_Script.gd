@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @onready var coin_lable: Label = $Coin_count/Coin_Lable
+@onready var progress_bar: ProgressBar = $ProgressBar
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -300.0
-
+var SPEED = 150.0
+var JUMP_VELOCITY = -300.0
 
 func _physics_process(delta: float) -> void:
+	progress_bar.value = Global.Player_HP
 	#gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -25,5 +26,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_collect_box_area_entered(area: Area2D) -> void:
-	Global.Coin += 1
+	Global.Coin += 10
 	coin_lable.text = "Coins: " + str(Global.Coin)
