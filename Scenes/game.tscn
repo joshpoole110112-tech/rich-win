@@ -1,3 +1,33 @@
 [gd_scene format=3 uid="uid://e736ep27geop"]
 
+[ext_resource type="PackedScene" uid="uid://dvbv2xql078tf" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://cfxbgsvan2m1f" path="res://Assets/Assets_sheet.png" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://dyqvefnaeve3d" path="res://Scenes/coin.tscn" id="3_wrm1d"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
+texture = ExtResource("2_qxrlw")
+0:3/size_in_atlas = Vector2i(4, 1)
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3dryh"]
+sources/0 = SubResource("TileSetAtlasSource_wrm1d")
+
 [node name="Game" type="Node2D" unique_id=833227981]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=946143407]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=38577020]
+shape = SubResource("WorldBoundaryShape2D_qxrlw")
+
+[node name="Player" parent="." unique_id=1923463523 instance=ExtResource("1_ebmjs")]
+position = Vector2(0, -17)
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1228481349]
+tile_set = SubResource("TileSet_3dryh")
+format = 2
+layer_0/tile_data = PackedInt32Array(65535, 0, 3, 2, 0, 3, 65533, 0, 3)
+
+[node name="Coin" parent="." unique_id=800425833 instance=ExtResource("3_wrm1d")]
+position = Vector2(52, -17)

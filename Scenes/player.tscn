@@ -1,3 +1,46 @@
 [gd_scene format=3 uid="uid://dvbv2xql078tf"]
 
+[ext_resource type="Script" uid="uid://b0yqdrv7vl5po" path="res://Scripts/Movement_Script.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dq1ywtl78l367" path="res://Assets/Player model.png" id="2_6t5aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(12, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(22, 34)
+
 [node name="Player" type="CharacterBody2D" unique_id=1923463523]
+collision_layer = 2
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=997167875]
+texture = ExtResource("2_6t5aa")
+
+[node name="Hit_Box" type="CollisionShape2D" parent="." unique_id=587835461]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=452016403]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="Collect_Box" type="Area2D" parent="." unique_id=1715360946]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collect_Box" unique_id=570935189]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="Coin_count" type="CanvasLayer" parent="." unique_id=1166909623]
+
+[node name="Coin_Lable" type="Label" parent="Coin_count" unique_id=1367894907]
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 96.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 36
+text = "Coins: 0"
+
+[connection signal="area_entered" from="Collect_Box" to="." method="_on_collect_box_area_entered"]
