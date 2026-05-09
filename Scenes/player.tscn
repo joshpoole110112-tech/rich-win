@@ -16,7 +16,7 @@ script = ExtResource("1_cvnsp")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=997167875]
 texture = ExtResource("2_6t5aa")
 
-[node name="Hit_Box" type="CollisionShape2D" parent="." unique_id=587835461]
+[node name="Player_Hit_Box" type="CollisionShape2D" parent="." unique_id=587835461]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_vgqql")
 

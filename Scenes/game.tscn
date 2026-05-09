@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvbv2xql078tf" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://cfxbgsvan2m1f" path="res://Assets/Assets_sheet.png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://dyqvefnaeve3d" path="res://Scenes/coin.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://bg7tv00xtubnn" path="res://Scenes/enemy.tscn" id="4_3dryh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
@@ -31,3 +32,7 @@ layer_0/tile_data = PackedInt32Array(65535, 0, 3, 2, 0, 3, 65533, 0, 3)
 
 [node name="Coin" parent="." unique_id=800425833 instance=ExtResource("3_wrm1d")]
 position = Vector2(52, -17)
+
+[node name="Enemy" parent="." unique_id=2030679967 node_paths=PackedStringArray("player") instance=ExtResource("4_3dryh")]
+position = Vector2(-66, -9)
+player = NodePath("../Player")

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bg7tv00xtubnn"]
+
+[ext_resource type="Script" uid="uid://mu67gd0dkgqx" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://d3kldyntw3otm" path="res://Assets/Enemy.png" id="1_hghv2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hghv2"]
+radius = 8.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=2030679967]
+collision_layer = 8
+script = ExtResource("1_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=842953915]
+texture = ExtResource("1_hghv2")
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D" unique_id=1335461519]
+target_position = Vector2(3.2783541e-06, 75)
+collision_mask = 2
+
+[node name="Enemy_Hit_Box" type="CollisionShape2D" parent="." unique_id=695382591]
+shape = SubResource("CircleShape2D_hghv2")
+
+[node name="Timer" type="Timer" parent="." unique_id=2143063011]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
