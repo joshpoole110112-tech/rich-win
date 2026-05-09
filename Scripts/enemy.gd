@@ -2,19 +2,22 @@ extends CharacterBody2D
 
 @export var player: CharacterBody2D
 @export var SPEED: int = 50
-@export var CHASE_SPEED: int = 130
+@export var CHASE_SPEED: int = 110
 @export var ACCELERATION: int = 300
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var ray_cast: RayCast2D = $Sprite2D/RayCast2D
 @onready var timer: Timer = $Timer
 @onready var immuaity: Timer = $Immuaity
+@onready var hp_bar: ProgressBar = $HpBar
 
 var Hit: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2
 var right_bounds: Vector2
 var left_bounds: Vector2
+var HP: int = 100
+var can_be_hit: bool = false
 
 enum States{
 	WANDER,
@@ -27,6 +30,7 @@ func  _ready() -> void:
 	right_bounds = self.position + Vector2(125,0)
 
 func _physics_process(delta: float) -> void:
+	hp_bar.value = HP
 	handle_gravity(delta)
 	handle_movement(delta)
 	change_direction()
@@ -35,6 +39,9 @@ func _physics_process(delta: float) -> void:
 		if immuaity.time_left <= 0:
 			Global.Player_HP -= 20
 			immuaity.start()
+	if can_be_hit:
+		if Input.is_action_just_pressed("Attack"):
+			HP -= 20
 
 func look_for_player():
 	if ray_cast.is_colliding():
@@ -94,10 +101,17 @@ func handle_gravity(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	current_state = States.WANDER
 
-#Tack damage
+#do damage
 func _on_enemy_attack_box_area_entered(_area: Area2D) -> void:
 	Hit = true
 	print("t")
 func _on_enemy_attack_box_area_exited(_area: Area2D) -> void:
 	Hit = false
 	print("f")
+
+#take damage
+func _on_enemy_hit_box_area_entered(_area: Area2D) -> void:
+	can_be_hit = true
+
+func _on_enemy_hit_box_area_exited(_area: Area2D) -> void:
+	can_be_hit = false

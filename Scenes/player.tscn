@@ -25,6 +25,9 @@ axis_stretch_horizontal = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
 size = Vector2(12, 24.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
+size = Vector2(68, 16)
+
 [node name="Player" type="CharacterBody2D" unique_id=1923463523]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
@@ -69,13 +72,22 @@ show_percentage = false
 
 [node name="Player_Hit_Box" type="Area2D" parent="." unique_id=1597728079]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Hit_Box" unique_id=242161883]
 shape = SubResource("RectangleShape2D_fkybt")
 
 [node name="Immuaity" type="Timer" parent="." unique_id=2043003519]
 one_shot = true
+
+[node name="Player_Attack_Box" type="Area2D" parent="." unique_id=2044172679]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_Box" unique_id=1334873154]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_x3wgy")
+debug_color = Color(0.5137255, 0, 0.12156863, 0.41960785)
 
 [connection signal="area_entered" from="Collect_Box" to="." method="_on_collect_box_area_entered"]
 [connection signal="timeout" from="Immuaity" to="." method="_on_immuaity_timeout"]
