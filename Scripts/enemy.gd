@@ -104,12 +104,10 @@ func _on_timer_timeout() -> void:
 #do damage
 func _on_enemy_attack_box_area_entered(_area: Area2D) -> void:
 	Hit = true
-	print("t")
 func _on_enemy_attack_box_area_exited(_area: Area2D) -> void:
 	Hit = false
-	print("f")
 
-#take damage
+#take damagea
 func _on_enemy_hit_box_area_entered(_area: Area2D) -> void:
 	can_be_hit = true
 
