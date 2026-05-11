@@ -19,8 +19,8 @@ var right_bounds: Vector2
 var left_bounds: Vector2
 var HP: int = 100
 var can_be_hit: bool = false
-var money: int = 0
-var damage: int = 20
+var money: int = 5
+var damage: int = 5
 
 enum States{
 	WANDER,

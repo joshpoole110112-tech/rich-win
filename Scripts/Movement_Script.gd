@@ -34,6 +34,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
+	Global.Player_Damage = Global.Coin
+	coin_lable.text = "Coins: " + str(Global.Coin)
+	strength.text = "Damage: " + str(Global.Player_Damage)
 	#attack
 	if is_attacking:
 		if att_time.time_left <= 0:
@@ -60,9 +63,6 @@ func _input(_event: InputEvent) -> void:
 
 func _on_collect_box_area_entered(_area: Area2D) -> void:
 	Global.Coin += 1
-	coin_lable.text = "Coins: " + str(Global.Coin)
-	Global.Player_Damage += 1
-	strength.text = "Damage: " + str(Global.Player_Damage)
 
 func _on_att_time_timeout() -> void:
 	is_attacking = false
