@@ -46,6 +46,9 @@ func _physics_process(delta: float) -> void:
 			if player_att_cooldown.time_left <= 0:
 				HP -= Global.Player_Damage
 				player_att_cooldown.start()
+	#die
+	if HP == 0:
+		queue_free()
 
 func look_for_player():
 	if ray_cast.is_colliding():

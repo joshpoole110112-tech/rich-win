@@ -150,6 +150,12 @@ animation = &"Idle"
 
 [node name="Att_time" type="Timer" parent="." unique_id=1740578554]
 wait_time = 0.25
+one_shot = true
+
+[node name="respawn_poss_timer" type="Timer" parent="." unique_id=826416749]
+wait_time = 10.0
+one_shot = true
 
 [connection signal="area_entered" from="Collect_Box" to="." method="_on_collect_box_area_entered"]
 [connection signal="timeout" from="Att_time" to="." method="_on_att_time_timeout"]
+[connection signal="timeout" from="respawn_poss_timer" to="." method="_on_respawn_poss_timer_timeout"]

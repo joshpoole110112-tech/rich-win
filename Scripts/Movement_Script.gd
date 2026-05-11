@@ -4,12 +4,14 @@ extends CharacterBody2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 @onready var att_time: Timer = $Att_time
+@onready var respawn_poss_timer: Timer = $respawn_poss_timer
 
 var SPEED = 150.0
 var JUMP_VELOCITY = -300.0
 var current_animation = "Idle"
 var is_attacking: bool = false
 var mouse_poss = null
+var GPlayer_poss = self.global_position
 
 func _physics_process(delta: float) -> void:
 	progress_bar.value = Global.Player_HP
@@ -31,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
+	#attack
 	if is_attacking:
 		if att_time.time_left <= 0:
 			att_time.start()
@@ -41,10 +44,17 @@ func _process(_delta: float) -> void:
 			animated.play("Attack left")
 	else:
 		animated.play("Idle")
+	#die
+	if respawn_poss_timer.time_left <= 0:
+		respawn_poss_timer.start()
+	if Global.Player_HP == 0:
+		self.global_position = GPlayer_poss
+		Global.Player_HP = 100
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Attack"):
-		is_attacking = true
+		if is_attacking == false:
+			is_attacking = true
 
 func _on_collect_box_area_entered(_area: Area2D) -> void:
 	Global.Coin += 10
@@ -53,3 +63,8 @@ func _on_collect_box_area_entered(_area: Area2D) -> void:
 
 func _on_att_time_timeout() -> void:
 	is_attacking = false
+
+
+func _on_respawn_poss_timer_timeout() -> void:
+	GPlayer_poss = self.global_position
+	
