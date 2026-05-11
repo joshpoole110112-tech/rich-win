@@ -19,6 +19,8 @@ var right_bounds: Vector2
 var left_bounds: Vector2
 var HP: int = 100
 var can_be_hit: bool = false
+var money: int = 0
+var damage: int = 20
 
 enum States{
 	WANDER,
@@ -39,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	look_for_player()
 	if Hit:
 		if immuaity.time_left <= 0:
-			Global.Player_HP -= 20
+			Global.Player_HP -= damage
 			immuaity.start()
 	if can_be_hit:
 		if Input.is_action_just_pressed("Attack"):
@@ -47,8 +49,13 @@ func _physics_process(delta: float) -> void:
 				HP -= Global.Player_Damage
 				player_att_cooldown.start()
 	#die
-	if HP == 0:
+	if HP <= 0:
 		queue_free()
+	if Global.Player_HP <= 0:
+		money += Global.Coin
+		damage = money
+		print(damage)
+		print(money)
 
 func look_for_player():
 	if ray_cast.is_colliding():

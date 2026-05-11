@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-@onready var coin_lable: Label = $Coin_count/Coin_Lable
+@onready var coin_lable: Label = $Ingame_text/Coin_Lable
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 @onready var att_time: Timer = $Att_time
 @onready var respawn_poss_timer: Timer = $respawn_poss_timer
+@onready var strength: Label = $Ingame_text/Strength
 
 var SPEED = 150.0
 var JUMP_VELOCITY = -300.0
@@ -47,9 +48,10 @@ func _process(_delta: float) -> void:
 	#die
 	if respawn_poss_timer.time_left <= 0:
 		respawn_poss_timer.start()
-	if Global.Player_HP == 0:
+	if Global.Player_HP <= 0:
 		self.global_position = GPlayer_poss
 		Global.Player_HP = 100
+		Global.Coin = 0
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Attack"):
@@ -57,9 +59,10 @@ func _input(_event: InputEvent) -> void:
 			is_attacking = true
 
 func _on_collect_box_area_entered(_area: Area2D) -> void:
-	Global.Coin += 10
+	Global.Coin += 1
 	coin_lable.text = "Coins: " + str(Global.Coin)
-
+	Global.Player_Damage += 1
+	strength.text = "Damage: " + str(Global.Player_Damage)
 
 func _on_att_time_timeout() -> void:
 	is_attacking = false

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cetqk7cgg8syl"]
+
+[ext_resource type="Texture2D" uid="uid://cmsx43wi7fp0n" path="res://Assets/Bank.png" id="1_6lu6a"]
+[ext_resource type="Script" uid="uid://ckq485w77h6aq" path="res://Scripts/bank.gd" id="2_haxjn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_haxjn"]
+radius = 23.537205
+
+[node name="Bank" type="Sprite2D" unique_id=1662857320]
+z_index = -5
+texture = ExtResource("1_6lu6a")
+script = ExtResource("2_haxjn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=984509155]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1928193245]
+position = Vector2(0, 21)
+shape = SubResource("CircleShape2D_haxjn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
