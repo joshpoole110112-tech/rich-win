@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://lfupg6h45tfc"]
+
+[ext_resource type="Script" uid="uid://cee4eljg07um4" path="res://Scripts/minus_button.gd" id="1_dwop5"]
+[ext_resource type="Texture2D" uid="uid://chgubq66hmyue" path="res://Assets/Bank/minus.png" id="2_jv0bh"]
+[ext_resource type="Texture2D" uid="uid://b5vrit5rtyk87" path="res://Assets/Bank/pressed_minus.png" id="3_30odb"]
+
+[node name="minus_button" type="Control" unique_id=1636017606]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_dwop5")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1326381826]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = ExtResource("2_jv0bh")
+texture_pressed = ExtResource("3_30odb")
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

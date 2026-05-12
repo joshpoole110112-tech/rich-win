@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dr5qjriysokwa"]
+
+[ext_resource type="Script" uid="uid://bl1xniopr7x8x" path="res://Scripts/plus_button.gd" id="1_2cqid"]
+[ext_resource type="Texture2D" uid="uid://ds3cvs4jdnfib" path="res://Assets/Bank/Pluse.png" id="1_n5vn3"]
+[ext_resource type="Texture2D" uid="uid://ddjmh05a2nii4" path="res://Assets/Bank/pressed_pluse.png" id="2_2cqid"]
+[ext_resource type="PackedScene" uid="uid://cni7tg0lk2eao" path="res://Scenes/Bank/text.tscn" id="2_4wv6h"]
+
+[node name="plus" type="Control" unique_id=1114046714]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_2cqid")
+Num = ExtResource("2_4wv6h")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=309713230]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = ExtResource("1_n5vn3")
+texture_pressed = ExtResource("2_2cqid")
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

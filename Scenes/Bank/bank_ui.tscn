@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dvpj6ykoh6r3v"]
+
+[ext_resource type="Script" uid="uid://d2ypx2moil7c7" path="res://Scripts/bank_ui.gd" id="1_2l043"]
+[ext_resource type="Texture2D" uid="uid://4ocdrhla1hs3" path="res://Assets/Bank/BankBg_ui.png" id="1_s73o3"]
+[ext_resource type="PackedScene" uid="uid://dr5qjriysokwa" path="res://Scenes/Bank/plus_button.tscn" id="2_4xycn"]
+[ext_resource type="PackedScene" uid="uid://lfupg6h45tfc" path="res://Scenes/Bank/minus_button.tscn" id="3_008sr"]
+
+[node name="BankUi" type="Control" unique_id=1169405813 node_paths=PackedStringArray("card_container")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2l043")
+plus_button = ExtResource("2_4xycn")
+minus_button = ExtResource("3_008sr")
+card_container = NodePath("TextureRect/HBoxContainer")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=980854448]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 124.0
+offset_right = 1016.0
+offset_bottom = 524.0
+texture = ExtResource("1_s73o3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=1448600503]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 100.0
+offset_right = 640.0
+offset_bottom = 180.0
+theme_override_constants/separation = 240
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1382414751]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 880.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 26
+text = "Select amout of money to put in bank"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect" unique_id=456875438]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 120.0
+offset_right = 560.0
+offset_bottom = 165.0
+alignment = 1
+
+[node name="Text" type="Label" parent="TextureRect/HBoxContainer2" unique_id=1570838080]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"

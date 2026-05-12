@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cetqk7cgg8syl"]
 
-[ext_resource type="Texture2D" uid="uid://cmsx43wi7fp0n" path="res://Assets/Bank.png" id="1_6lu6a"]
+[ext_resource type="Texture2D" uid="uid://cmsx43wi7fp0n" path="res://Assets/Bank/Bank.png" id="1_6lu6a"]
 [ext_resource type="Script" uid="uid://ckq485w77h6aq" path="res://Scripts/bank.gd" id="2_haxjn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_haxjn"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfxbgsvan2m1f" path="res://Assets/Assets_sheet.png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://dyqvefnaeve3d" path="res://Scenes/coin.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bg7tv00xtubnn" path="res://Scenes/enemy.tscn" id="4_3dryh"]
-[ext_resource type="PackedScene" uid="uid://cetqk7cgg8syl" path="res://Scenes/Bank.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://cetqk7cgg8syl" path="res://Scenes/Bank/Bank.tscn" id="5_wowpa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
