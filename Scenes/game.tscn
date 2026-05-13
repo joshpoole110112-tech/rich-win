@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyqvefnaeve3d" path="res://Scenes/coin.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bg7tv00xtubnn" path="res://Scenes/enemy.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://cetqk7cgg8syl" path="res://Scenes/Bank/Bank.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dvpj6ykoh6r3v" path="res://Scenes/Bank/bank_ui.tscn" id="6_i6g32"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
@@ -38,5 +39,7 @@ position = Vector2(52, -17)
 position = Vector2(-196, -10)
 player = NodePath("../Player")
 
-[node name="Sprite2D" parent="." unique_id=1662857320 instance=ExtResource("5_wowpa")]
+[node name="Bank" parent="." unique_id=1662857320 instance=ExtResource("5_wowpa")]
 position = Vector2(156, -40)
+
+[node name="BankUi" parent="." unique_id=1169405813 instance=ExtResource("6_i6g32")]

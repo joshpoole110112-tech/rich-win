@@ -4,8 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://4ocdrhla1hs3" path="res://Assets/Bank/BankBg_ui.png" id="1_s73o3"]
 [ext_resource type="PackedScene" uid="uid://dr5qjriysokwa" path="res://Scenes/Bank/plus_button.tscn" id="2_4xycn"]
 [ext_resource type="PackedScene" uid="uid://lfupg6h45tfc" path="res://Scenes/Bank/minus_button.tscn" id="3_008sr"]
+[ext_resource type="Texture2D" uid="uid://cfxbgsvan2m1f" path="res://Assets/Assets_sheet.png" id="5_ruykh"]
 
-[node name="BankUi" type="Control" unique_id=1169405813 node_paths=PackedStringArray("card_container")]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcb1l"]
+texture = ExtResource("5_ruykh")
+region_rect = Rect2(176, 48, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojp2l"]
+texture = ExtResource("5_ruykh")
+region_rect = Rect2(176, 64, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ruykh"]
+texture = ExtResource("5_ruykh")
+region_rect = Rect2(176, 48, 32, 16)
+
+[node name="BankUi" type="CanvasLayer" unique_id=1554365257]
+layer = 100
+
+[node name="BankUi" type="Control" parent="." unique_id=1169405813 node_paths=PackedStringArray("card_container")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -15,15 +31,15 @@ plus_button = ExtResource("2_4xycn")
 minus_button = ExtResource("3_008sr")
 card_container = NodePath("TextureRect/HBoxContainer")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=980854448]
+[node name="TextureRect" type="TextureRect" parent="BankUi" unique_id=980854448]
 layout_mode = 0
 offset_left = 136.0
-offset_top = 124.0
+offset_top = 130.0
 offset_right = 1016.0
-offset_bottom = 524.0
+offset_bottom = 530.0
 texture = ExtResource("1_s73o3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=1448600503]
+[node name="HBoxContainer" type="HBoxContainer" parent="BankUi/TextureRect" unique_id=1448600503]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 100.0
@@ -31,7 +47,7 @@ offset_right = 640.0
 offset_bottom = 180.0
 theme_override_constants/separation = 240
 
-[node name="Label" type="Label" parent="TextureRect" unique_id=1382414751]
+[node name="Label" type="Label" parent="BankUi/TextureRect" unique_id=1382414751]
 layout_mode = 0
 offset_top = 30.0
 offset_right = 880.0
@@ -40,7 +56,16 @@ theme_override_font_sizes/font_size = 26
 text = "Select amout of money to put in bank"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect" unique_id=456875438]
+[node name="Label2" type="Label" parent="BankUi/TextureRect" unique_id=481139613]
+layout_mode = 0
+offset_top = 263.0
+offset_right = 880.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 26
+text = "Banked money: 0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BankUi/TextureRect" unique_id=456875438]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 120.0
@@ -48,7 +73,20 @@ offset_right = 560.0
 offset_bottom = 165.0
 alignment = 1
 
-[node name="Text" type="Label" parent="TextureRect/HBoxContainer2" unique_id=1570838080]
+[node name="Text" type="Label" parent="BankUi/TextureRect/HBoxContainer2" unique_id=1570838080]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
+
+[node name="submit_b" type="Button" parent="BankUi/TextureRect" unique_id=1484959673]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 0
+offset_left = 380.0
+offset_top = 180.0
+offset_right = 500.0
+offset_bottom = 250.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fcb1l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ojp2l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ruykh")
+
+[connection signal="pressed" from="BankUi/TextureRect/submit_b" to="BankUi" method="_on_submit_b_pressed"]
