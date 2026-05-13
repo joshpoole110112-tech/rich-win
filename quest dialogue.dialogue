@@ -1,0 +1,16 @@
+~ Q1
+if Q1.claimed:
+	if Q1.Qcompleted:
+		Sam: Wow here is you 10 coins!
+		set Global.Coin += 10
+	else:
+		Sam: Come back then the quest is finished!
+else:
+	Sam: Hello there!
+	You: Do you have a quest for me?
+	Sam: Yes I do if you kill a red enemy I will give you 10 coins.
+	- Start quest
+		Sam: Well you better get the job done!
+		set Q1.claimed = true
+	- Leave => END
+=> END

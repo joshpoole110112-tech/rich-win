@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bg7tv00xtubnn" path="res://Scenes/enemy.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://cetqk7cgg8syl" path="res://Scenes/Bank/Bank.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dvpj6ykoh6r3v" path="res://Scenes/Bank/bank_ui.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://dveiisd44gvd2" path="res://Scenes/quest_person.tscn" id="7_1l0tm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
@@ -43,3 +44,6 @@ player = NodePath("../Player")
 position = Vector2(156, -40)
 
 [node name="BankUi" parent="." unique_id=1169405813 instance=ExtResource("6_i6g32")]
+
+[node name="quest person" parent="." unique_id=1952113134 instance=ExtResource("7_1l0tm")]
+position = Vector2(237, -16)

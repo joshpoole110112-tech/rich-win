@@ -17,7 +17,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	text.text = str(Global.bank_text)
-	label_2.text = str(Global.bank_money)
+	if Global.You_brock != true:
+		label_2.text = str(Global.bank_money)
 	if Global.Ui_bank_show:
 		bank_ui.visible = true
 	else:
@@ -26,7 +27,8 @@ func _process(_delta: float) -> void:
 
 func _on_submit_b_pressed() -> void:
 	if Global.Coin - Global.bank_text < 0:
-		pass
+		Global.You_brock = true
+		label_2.text = "You don't have enough coins!"
 	else:
 		Global.bank_money += Global.bank_text
 		Global.Coin -= Global.bank_text

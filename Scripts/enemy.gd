@@ -50,6 +50,9 @@ func _physics_process(delta: float) -> void:
 				player_att_cooldown.start()
 	#die
 	if HP <= 0:
+		#Q1a
+		if Q1.claimed:
+			Q1.Qcompleted = true
 		queue_free()
 	if Global.Player_HP <= 0:
 		money += Global.Coin

@@ -21,15 +21,17 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	#Jump
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Global.player_freeze != true:
+		if Input.is_action_just_pressed("Jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 	
 	#walk
-	var direction := Input.get_axis("M_left", "M_Right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if Global.player_freeze != true:
+		var direction := Input.get_axis("M_left", "M_Right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
 
@@ -38,14 +40,17 @@ func _process(_delta: float) -> void:
 	coin_lable.text = "Coins: " + str(Global.Coin)
 	strength.text = "Damage: " + str(Global.Player_Damage)
 	#attack
-	if is_attacking:
-		if att_time.time_left <= 0:
-			att_time.start()
-		mouse_poss = sign(get_local_mouse_position())
-		if mouse_poss.x == 1:
-			animated.play("Attack right")
+	if Global.player_freeze != true:
+		if is_attacking:
+			if att_time.time_left <= 0:
+				att_time.start()
+			mouse_poss = sign(get_local_mouse_position())
+			if mouse_poss.x == 1:
+				animated.play("Attack right")
+			else:
+				animated.play("Attack left")
 		else:
-			animated.play("Attack left")
+			animated.play("Idle")
 	else:
 		animated.play("Idle")
 	#die
