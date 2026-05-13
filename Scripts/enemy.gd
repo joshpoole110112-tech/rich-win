@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 	if Hit:
 		if Global.Player_HP == 0:
 			money += Global.coin
-			print(money)
 		if immuaity.time_left <= 0:
 			Global.Player_HP -= damage
 			immuaity.start()
@@ -66,8 +65,6 @@ func _physics_process(delta: float) -> void:
 	if Global.Player_HP <= 0:
 		money += Global.Coin
 		damage = money
-		print(damage)
-		print(money)
 
 func look_for_player():
 	if ray_cast.is_colliding():

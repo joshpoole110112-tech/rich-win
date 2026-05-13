@@ -19,5 +19,18 @@ collision_mask = 2
 position = Vector2(0, 21)
 shape = SubResource("CircleShape2D_haxjn")
 
+[node name="Interact text" type="CanvasLayer" parent="." unique_id=1022949139]
+layer = 100
+visible = false
+
+[node name="Label" type="Label" parent="Interact text" unique_id=1268221441]
+offset_left = 7.0
+offset_top = 533.0
+offset_right = 1159.0
+offset_bottom = 578.0
+theme_override_font_sizes/font_size = 32
+text = "Press E to interact"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

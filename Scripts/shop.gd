@@ -1,28 +1,28 @@
 extends Sprite2D
 
+var collision: bool = false
+var pressed: bool = false
 @onready var interact_text: CanvasLayer = $"Interact text"
 
-var is_near_bank: bool = false
-var pressed: bool = false
-
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	is_near_bank = true
+	collision = true
 	interact_text.visible = true
+
 func _on_area_2d_body_exited(_body: Node2D) -> void:
-	is_near_bank = false
+	collision = false
 	interact_text.visible = false
 
 func _process(_delta: float) -> void:
-	if is_near_bank:
+	if collision:
 		if pressed == false:
 			if Input.is_action_just_pressed("Interact"):
 				interact_text.visible = false
-				Global.Ui_bank_show = true
+				Global.Ui_shop_show = true
 				pressed = true
 		else:
 			if Input.is_action_just_pressed("Interact"):
-				Global.Ui_bank_show = false
+				Global.Ui_shop_show = false
 				pressed = false
 	else:
-		Global.Ui_bank_show = false
+		Global.Ui_shop_show = false
 		pressed = false

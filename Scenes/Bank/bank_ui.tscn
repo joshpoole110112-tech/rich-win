@@ -34,9 +34,9 @@ card_container = NodePath("TextureRect/HBoxContainer")
 [node name="TextureRect" type="TextureRect" parent="BankUi" unique_id=980854448]
 layout_mode = 0
 offset_left = 136.0
-offset_top = 130.0
+offset_top = 124.0
 offset_right = 1016.0
-offset_bottom = 530.0
+offset_bottom = 524.0
 texture = ExtResource("1_s73o3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BankUi/TextureRect" unique_id=1448600503]
