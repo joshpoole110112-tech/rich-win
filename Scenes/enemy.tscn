@@ -76,8 +76,13 @@ shape = SubResource("CircleShape2D_0830c")
 wait_time = 0.25
 one_shot = true
 
+[node name="respawn" type="Timer" parent="." unique_id=426088994]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Enemy_Attack_Box" to="." method="_on_enemy_attack_box_area_entered"]
 [connection signal="area_exited" from="Enemy_Attack_Box" to="." method="_on_enemy_attack_box_area_exited"]
 [connection signal="area_entered" from="Enemy_Hit_Box" to="." method="_on_enemy_hit_box_area_entered"]
 [connection signal="area_exited" from="Enemy_Hit_Box" to="." method="_on_enemy_hit_box_area_exited"]
+[connection signal="timeout" from="respawn" to="." method="_on_respawn_timeout"]

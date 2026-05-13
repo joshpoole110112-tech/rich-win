@@ -26,7 +26,7 @@ axis_stretch_horizontal = 1
 size = Vector2(12, 24.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
-size = Vector2(68, 16)
+size = Vector2(88, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_6t5aa")

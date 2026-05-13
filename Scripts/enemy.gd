@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var immuaity: Timer = $Immuaity
 @onready var hp_bar: ProgressBar = $HpBar
 @onready var player_att_cooldown: Timer = $Player_att_cooldown
+@onready var respawn: Timer = $respawn
 
 var Hit: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -21,7 +22,7 @@ var HP: int = 100
 var can_be_hit: bool = false
 var money: int = 5
 var damage: int = 5
-
+var start_poss: Vector2
 enum States{
 	WANDER,
 	CHASE
@@ -31,6 +32,7 @@ var current_state = States.WANDER
 func _ready() -> void:
 	left_bounds = self.position + Vector2(-125,0)
 	right_bounds = self.position + Vector2(125,0)
+	start_poss = global_position
 
 func _physics_process(delta: float) -> void:
 	hp_bar.value = HP
@@ -40,6 +42,9 @@ func _physics_process(delta: float) -> void:
 	change_direction()
 	look_for_player()
 	if Hit:
+		if Global.Player_HP == 0:
+			money += Global.coin
+			print(money)
 		if immuaity.time_left <= 0:
 			Global.Player_HP -= damage
 			immuaity.start()
@@ -53,7 +58,11 @@ func _physics_process(delta: float) -> void:
 		#Q1a
 		if Q1.claimed:
 			Q1.Qcompleted = true
-		queue_free()
+		HP = 100
+		self.position = Vector2(10000000000, 0)
+		Global.Coin += money
+		money = 5
+		respawn.start()
 	if Global.Player_HP <= 0:
 		money += Global.Coin
 		damage = money
@@ -124,9 +133,12 @@ func _on_enemy_attack_box_area_entered(_area: Area2D) -> void:
 func _on_enemy_attack_box_area_exited(_area: Area2D) -> void:
 	Hit = false
 
-#take damagea
+#take damage
 func _on_enemy_hit_box_area_entered(_area: Area2D) -> void:
 	can_be_hit = true
 
 func _on_enemy_hit_box_area_exited(_area: Area2D) -> void:
 	can_be_hit = false
+
+func _on_respawn_timeout() -> void:
+	self.global_position = start_poss

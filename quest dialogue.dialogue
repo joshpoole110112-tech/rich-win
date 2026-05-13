@@ -1,8 +1,10 @@
 ~ Q1
 if Q1.claimed:
 	if Q1.Qcompleted:
-		Sam: Wow here is you 10 coins!
-		set Global.Coin += 10
+		if Q1.q1_ended == false:
+			Sam: Wow here is you 10 coins!
+			set Global.Coin += 10
+			set Q1.q1_ended = true
 	else:
 		Sam: Come back then the quest is finished!
 else:

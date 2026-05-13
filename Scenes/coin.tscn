@@ -17,4 +17,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1059819620]
 shape = SubResource("CircleShape2D_jgi06")
 
+[node name="respawn" type="Timer" parent="." unique_id=1621839960]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="respawn" to="." method="_on_respawn_timeout"]
