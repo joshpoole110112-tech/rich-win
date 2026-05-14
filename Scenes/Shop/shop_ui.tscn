@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cloijoc1af804"]
 
 [ext_resource type="Texture2D" uid="uid://4ocdrhla1hs3" path="res://Assets/Bank/BankBg_ui.png" id="1_o75od"]
-[ext_resource type="Script" uid="uid://cmojxpywlc8vr" path="res://Scripts/shop_ui.gd" id="1_v6quj"]
-[ext_resource type="Texture2D" uid="uid://c0sbxc1jimc71" path="res://Assets/Money.png" id="2_a7r41"]
+[ext_resource type="Script" uid="uid://cmojxpywlc8vr" path="res://Scripts/Shop/shop_ui.gd" id="1_v6quj"]
+[ext_resource type="Texture2D" uid="uid://c0sbxc1jimc71" path="res://Assets/Bank/Money.png" id="2_a7r41"]
 [ext_resource type="Texture2D" uid="uid://cfxbgsvan2m1f" path="res://Assets/Assets_sheet.png" id="2_o75od"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7r41"]
@@ -48,8 +48,9 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect/MarginContainer/VBoxContainer" unique_id=1012399819]
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(770, 45)
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="attack_price" type="Label" parent="Control/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1149862439]
 custom_minimum_size = Vector2(51, 0)
@@ -61,7 +62,21 @@ text = "50"
 horizontal_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1380221462]
-position = Vector2(74, 23)
+position = Vector2(74, 24)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_a7r41")
+
+[node name="Player money" type="Label" parent="Control/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1359622219]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/Player money" unique_id=2045253396]
+position = Vector2(324, 24)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_a7r41")
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dveiisd44gvd2"]
 
-[ext_resource type="Script" uid="uid://c04e864qnsqoy" path="res://Scripts/quest_person.gd" id="1_4bmrn"]
+[ext_resource type="Script" uid="uid://c04e864qnsqoy" path="res://Scripts/Quests/quest_person.gd" id="1_4bmrn"]
 [ext_resource type="Texture2D" uid="uid://cn81hk3a5lcge" path="res://Assets/Quest_person.png" id="1_b13tj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4bmrn"]

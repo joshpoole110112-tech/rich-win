@@ -5,8 +5,11 @@ if Q1.claimed:
 			Sam: Wow here is you 10 coins!
 			set Global.Coin += 10
 			set Q1.q1_ended = true
+			set Global.Q_state = 2
+			=> END
 	else:
 		Sam: Come back then the quest is finished!
+		=> END
 else:
 	Sam: Hello there!
 	You: Do you have a quest for me?
@@ -14,5 +17,28 @@ else:
 	- Start quest
 		Sam: Well you better get the job done!
 		set Q1.claimed = true
+		=> END
 	- Leave => END
-=> END
+~ Q2
+if Q2.claimed:
+	if Q2.Qcompleted:
+		if Q2.q2_ended == false:
+			Sam: Wow here is you 50 coins!
+			set Global.Coin += 50
+			set Q2.q2_ended = true
+			set Global.Q_state = 3
+			=> END
+	else:
+		Sam: Come back then the quest is finished!
+		=> END
+else:
+	Sam: Didn't expect you to come back. Do you want a nother quest?
+	- What is the quest?
+		Sam: Kill 3 red enemys for 50 coins.
+		- Yes
+			Sam: Well you better get the job done!
+			set Q2.claimed = true
+			=> END
+		- No => END
+	- No! => END
+	=> END

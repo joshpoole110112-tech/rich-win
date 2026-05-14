@@ -7,7 +7,10 @@ func _process(_delta: float) -> void:
 	if in_collision:
 		if Input.is_action_just_pressed("Interact"):
 			interact_text.visible = false
-			DialogueManager.show_example_dialogue_balloon(load("uid://rub3eqesw0ni"))
+			if Global.Q_state == 1:
+				DialogueManager.show_example_dialogue_balloon(load("uid://rub3eqesw0ni"), "Q1")
+			elif Global.Q_state == 2:
+				DialogueManager.show_example_dialogue_balloon(load("uid://rub3eqesw0ni"), "Q2")
 			Global.player_freeze = true
 	await DialogueManager.dialogue_ended
 	Global.player_freeze = false

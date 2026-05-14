@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cetqk7cgg8syl" path="res://Scenes/Bank/Bank.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dvpj6ykoh6r3v" path="res://Scenes/Bank/bank_ui.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dveiisd44gvd2" path="res://Scenes/quest_person.tscn" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://dvt3i3be6mdry" path="res://Scenes/shop.tscn" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://cloijoc1af804" path="res://Scenes/shop_ui.tscn" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://dvt3i3be6mdry" path="res://Scenes/Shop/shop.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://cloijoc1af804" path="res://Scenes/Shop/shop_ui.tscn" id="9_h4fw4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvpj6ykoh6r3v"]
 
-[ext_resource type="Script" uid="uid://d2ypx2moil7c7" path="res://Scripts/bank_ui.gd" id="1_2l043"]
+[ext_resource type="Script" uid="uid://d2ypx2moil7c7" path="res://Scripts/Bank/bank_ui.gd" id="1_2l043"]
 [ext_resource type="Texture2D" uid="uid://4ocdrhla1hs3" path="res://Assets/Bank/BankBg_ui.png" id="1_s73o3"]
 [ext_resource type="PackedScene" uid="uid://dr5qjriysokwa" path="res://Scenes/Bank/plus_button.tscn" id="2_4xycn"]
 [ext_resource type="PackedScene" uid="uid://lfupg6h45tfc" path="res://Scenes/Bank/minus_button.tscn" id="3_008sr"]

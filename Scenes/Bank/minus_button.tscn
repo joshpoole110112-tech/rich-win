@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lfupg6h45tfc"]
 
-[ext_resource type="Script" uid="uid://cee4eljg07um4" path="res://Scripts/minus_button.gd" id="1_dwop5"]
+[ext_resource type="Script" uid="uid://cee4eljg07um4" path="res://Scripts/Bank/minus_button.gd" id="1_dwop5"]
 [ext_resource type="Texture2D" uid="uid://chgubq66hmyue" path="res://Assets/Bank/minus.png" id="2_jv0bh"]
 [ext_resource type="Texture2D" uid="uid://b5vrit5rtyk87" path="res://Assets/Bank/pressed_minus.png" id="3_30odb"]
 

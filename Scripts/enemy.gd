@@ -18,11 +18,12 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2
 var right_bounds: Vector2
 var left_bounds: Vector2
-var HP: int = 100
+var HP: float = 100
 var can_be_hit: bool = false
-var money: int = 5
-var damage: int = 5
+var money: float = 5
+var damage: float = 5
 var start_poss: Vector2
+var Q2_kills = 0
 enum States{
 	WANDER,
 	CHASE
@@ -57,6 +58,10 @@ func _physics_process(delta: float) -> void:
 		#Q1a
 		if Q1.claimed:
 			Q1.Qcompleted = true
+		if Q2.claimed:
+			Q2_kills += 1
+			if Q2_kills >= 3:
+				Q2.Qcompleted = true
 		HP = 100
 		self.position = Vector2(10000000000, 0)
 		Global.Coin += money

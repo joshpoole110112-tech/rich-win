@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
-	Global.Player_Damage = Global.Coin
+	#Global.Player_Damage = Global.Coin
 	coin_lable.text = "Coins: " + str(Global.Coin)
 	strength.text = "Damage: " + str(Global.Player_Damage)
 	#attack
