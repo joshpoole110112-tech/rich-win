@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var strength: Label = $Ingame_text/Strength
 
 var SPEED = 150.0
-var JUMP_VELOCITY = -300.0
+var JUMP_VELOCITY = -320.0
 var current_animation = "Idle"
 var is_attacking: bool = false
 var mouse_poss = null

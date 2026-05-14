@@ -99,6 +99,8 @@ shape = SubResource("RectangleShape2D_vgqql")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=452016403]
 zoom = Vector2(3, 3)
 process_callback = 0
+limit_left = -742
+limit_right = 1246
 position_smoothing_enabled = true
 
 [node name="Collect_Box" type="Area2D" parent="." unique_id=1715360946]
@@ -127,6 +129,7 @@ theme_override_font_sizes/font_size = 32
 text = "Damage: 0"
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1907909354]
+z_index = 100
 offset_left = -16.0
 offset_top = -26.0
 offset_right = 16.0

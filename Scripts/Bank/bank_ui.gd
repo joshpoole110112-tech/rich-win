@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	text.text = str(Global.bank_text)
 	if Global.You_brock != true:
-		label_2.text = str(Global.bank_money)
+		label_2.text = "Banked money: " + str(Global.bank_money)
 	if Global.Ui_bank_show:
 		bank_ui.visible = true
 	else:
