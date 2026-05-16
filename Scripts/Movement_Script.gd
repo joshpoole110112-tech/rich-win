@@ -12,7 +12,10 @@ var JUMP_VELOCITY = -320.0
 var current_animation = "Idle"
 var is_attacking: bool = false
 var mouse_poss = null
-var GPlayer_poss = self.global_position
+var start_poss: Vector2
+
+func _ready() -> void:
+	start_poss = global_position
 
 func _physics_process(delta: float) -> void:
 	progress_bar.value = Global.Player_HP
@@ -59,7 +62,7 @@ func _process(_delta: float) -> void:
 	if respawn_poss_timer.time_left <= 0:
 		respawn_poss_timer.start()
 	if Global.Player_HP <= 0:
-		self.global_position = GPlayer_poss
+		self.global_position = start_poss
 		Global.Player_HP = 100
 		Global.Coin = 0
 
@@ -76,5 +79,5 @@ func _on_att_time_timeout() -> void:
 
 
 func _on_respawn_poss_timer_timeout() -> void:
-	GPlayer_poss = self.global_position
+	start_poss = global_position
 	

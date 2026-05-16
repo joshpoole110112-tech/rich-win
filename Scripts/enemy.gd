@@ -23,7 +23,7 @@ var can_be_hit: bool = false
 var money: float = 5
 var damage: float = 5
 var start_poss: Vector2
-var Q2_kills = 0
+
 enum States{
 	WANDER,
 	CHASE
@@ -59,8 +59,8 @@ func _physics_process(delta: float) -> void:
 		if Q1.claimed:
 			Q1.Qcompleted = true
 		if Q2.claimed:
-			Q2_kills += 1
-			if Q2_kills >= 3:
+			Q2.Q2_kills += 1
+			if Q2.Q2_kills >= 3:
 				Q2.Qcompleted = true
 		HP = 100
 		self.position = Vector2(10000000000, 0)
@@ -74,6 +74,8 @@ func _physics_process(delta: float) -> void:
 func look_for_player():
 	if ray_cast.is_colliding():
 		var collider = ray_cast.get_collider()
+		print("p" + str(player))
+		print("c" + str(collider))
 		if collider == player:
 			chase_player()
 		elif current_state == States.CHASE:

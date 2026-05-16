@@ -33,3 +33,15 @@ func _on_submit_b_pressed() -> void:
 		Global.bank_money += Global.bank_text
 		Global.Coin -= Global.bank_text
 		Global.bank_text = 0
+
+
+func _on_minus_10_pressed() -> void:
+	Global.bank_text -= 10
+	Global.You_brock = false
+	if Global.bank_text < 0:
+		Global.bank_text = 0
+
+
+func _on_pluse_10_pressed() -> void:
+	Global.bank_text += 10
+	Global.You_brock = false
