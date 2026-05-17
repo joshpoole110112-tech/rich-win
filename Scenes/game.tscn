@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dvt3i3be6mdry" path="res://Scenes/Shop/shop.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://cloijoc1af804" path="res://Scenes/Shop/shop_ui.tscn" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dveiisd44gvd2" path="res://Scenes/quest_person.tscn" id="9_ldgsr"]
+[ext_resource type="FontFile" uid="uid://b7nhb23ab6fxn" path="res://Assets/PixelOperator8.ttf" id="10_ldgsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("2_qxrlw")
@@ -83,3 +84,16 @@ position = Vector2(-272, -122)
 [node name="Enemy2" parent="." unique_id=1310385512 node_paths=PackedStringArray("player") instance=ExtResource("4_3dryh")]
 position = Vector2(179, -114)
 player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1094012942]
+layer = 100
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=129835050]
+offset_left = -289.0
+offset_top = -148.0
+offset_right = -255.0
+offset_bottom = -140.0
+theme_override_fonts/font = ExtResource("10_ldgsr")
+theme_override_font_sizes/font_size = 8
+text = "Quest"

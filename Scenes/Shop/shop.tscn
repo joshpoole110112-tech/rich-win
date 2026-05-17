@@ -24,9 +24,8 @@ layer = 100
 visible = false
 
 [node name="Label" type="Label" parent="Interact text" unique_id=835314343]
-offset_left = 7.0
 offset_top = 533.0
-offset_right = 1159.0
+offset_right = 1600.0
 offset_bottom = 578.0
 theme_override_font_sizes/font_size = 32
 text = "Press E to interact"

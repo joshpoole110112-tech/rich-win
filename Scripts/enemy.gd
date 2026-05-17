@@ -74,8 +74,6 @@ func _physics_process(delta: float) -> void:
 func look_for_player():
 	if ray_cast.is_colliding():
 		var collider = ray_cast.get_collider()
-		print("p" + str(player))
-		print("c" + str(collider))
 		if collider == player:
 			chase_player()
 		elif current_state == States.CHASE:

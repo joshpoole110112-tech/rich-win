@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://d0q8tfdwn5xs7"]
+
+[ext_resource type="Script" uid="uid://dnd7voy4y0123" path="res://Scripts/title_screen.gd" id="1_4gxqj"]
+[ext_resource type="Texture2D" uid="uid://dhhownkrjwo4c" path="res://Assets/StartScreen_ui.png" id="1_klylv"]
+[ext_resource type="Texture2D" uid="uid://cfxbgsvan2m1f" path="res://Assets/Assets_sheet.png" id="2_p3fck"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gxqj"]
+texture = ExtResource("2_p3fck")
+region_rect = Rect2(80, 208, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twnyg"]
+texture = ExtResource("2_p3fck")
+region_rect = Rect2(80, 224, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55kwv"]
+texture = ExtResource("2_p3fck")
+region_rect = Rect2(80, 208, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_12m1t"]
+texture = ExtResource("2_p3fck")
+region_rect = Rect2(112, 192, 54, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vd4x"]
+texture = ExtResource("2_p3fck")
+region_rect = Rect2(112, 208, 54, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n82rj"]
+texture = ExtResource("2_p3fck")
+region_rect = Rect2(112, 192, 54, 16)
+
+[node name="Title screen" type="Control" unique_id=101973165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4gxqj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2106458782]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_klylv")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=2018655428]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 0
+offset_top = 152.0
+offset_right = 1600.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 64
+text = "Rich Win!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=4064615]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="start_b" type="Button" parent="TextureRect/VBoxContainer" unique_id=1813479915]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_4gxqj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_twnyg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_55kwv")
+
+[node name="settings_b" type="Button" parent="TextureRect/VBoxContainer" unique_id=1021871695]
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_12m1t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6vd4x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_n82rj")
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/start_b" to="." method="_on_start_b_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/settings_b" to="." method="_on_settings_b_pressed"]

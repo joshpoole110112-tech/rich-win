@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var respawn_poss_timer: Timer = $respawn_poss_timer
 @onready var strength: Label = $Ingame_text/Strength
 
+var CantHeal: bool = false
 var SPEED = 150.0
 var JUMP_VELOCITY = -320.0
 var current_animation = "Idle"
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	#Global.Player_Damage = Global.Coin
 	coin_lable.text = "Coins: " + str(Global.Coin)
 	strength.text = "Damage: " + str(Global.Player_Damage)
@@ -65,6 +66,12 @@ func _process(_delta: float) -> void:
 		self.global_position = start_poss
 		Global.Player_HP = 100
 		Global.Coin = 0
+	#heal
+	if not CantHeal:
+		if Global.Player_HP >= 100:
+			Global.Player_HP = 100
+		else:
+			Global.Player_HP += 0.001/delta
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Attack"):
@@ -81,3 +88,9 @@ func _on_att_time_timeout() -> void:
 func _on_respawn_poss_timer_timeout() -> void:
 	start_poss = global_position
 	
+
+func _on_cant_heal_box_area_entered(_area: Area2D) -> void:
+	CantHeal = true
+
+func _on_cant_heal_box_area_exited(_area: Area2D) -> void:
+	CantHeal = false

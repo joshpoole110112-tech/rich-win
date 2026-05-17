@@ -47,20 +47,29 @@ layer = 100
 
 [node name="BankUi" type="Control" parent="." unique_id=1169405813 node_paths=PackedStringArray("card_container")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_2l043")
 plus_button = ExtResource("2_4xycn")
 minus_button = ExtResource("3_008sr")
 card_container = NodePath("TextureRect/HBoxContainer")
 
 [node name="TextureRect" type="TextureRect" parent="BankUi" unique_id=980854448]
-layout_mode = 0
-offset_left = 125.0
-offset_top = 116.0
-offset_right = 1005.0
-offset_bottom = 516.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -200.0
+offset_right = 440.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_s73o3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BankUi/TextureRect" unique_id=1448600503]

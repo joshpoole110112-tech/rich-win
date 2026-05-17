@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://mu67gd0dkgqx" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://d3kldyntw3otm" path="res://Assets/Enemy.png" id="1_hghv2"]
-[ext_resource type="PackedScene" uid="uid://dvbv2xql078tf" path="res://Scenes/player.tscn" id="2_0830c"]
 [ext_resource type="Texture2D" uid="uid://byx7rj45ujfxa" path="res://Assets/Player/HealthBar_BG.png" id="3_287tu"]
 [ext_resource type="Texture2D" uid="uid://b23nos16jn5hj" path="res://Assets/Player/HealthBar_p.png" id="4_0830c"]
 
@@ -25,10 +24,12 @@ radius = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0830c"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
+radius = 29.274563
+
 [node name="Enemy" type="CharacterBody2D" unique_id=2030679967]
 collision_layer = 8
 script = ExtResource("1_1f0kj")
-player = ExtResource("2_0830c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=842953915]
 texture = ExtResource("1_hghv2")
@@ -81,6 +82,13 @@ one_shot = true
 [node name="respawn" type="Timer" parent="." unique_id=426088994]
 wait_time = 10.0
 one_shot = true
+
+[node name="Cant heal box" type="Area2D" parent="." unique_id=874863604]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cant heal box" unique_id=424237366]
+shape = SubResource("CircleShape2D_ghaa6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Enemy_Attack_Box" to="." method="_on_enemy_attack_box_area_entered"]

@@ -89,6 +89,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
+radius = 46.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1923463523]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
@@ -167,6 +170,18 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
+[node name="Cant heal box" type="Area2D" parent="." unique_id=1809922293]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cant heal box" unique_id=1353691532]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_vgqql")
+
 [connection signal="area_entered" from="Collect_Box" to="." method="_on_collect_box_area_entered"]
+[connection signal="area_entered" from="Player_Attack_Box" to="." method="_on_player_attack_box_area_entered"]
+[connection signal="area_exited" from="Player_Attack_Box" to="." method="_on_player_attack_box_area_exited"]
 [connection signal="timeout" from="Att_time" to="." method="_on_att_time_timeout"]
 [connection signal="timeout" from="respawn_poss_timer" to="." method="_on_respawn_poss_timer_timeout"]
+[connection signal="area_entered" from="Cant heal box" to="." method="_on_cant_heal_box_area_entered"]
+[connection signal="area_exited" from="Cant heal box" to="." method="_on_cant_heal_box_area_exited"]
