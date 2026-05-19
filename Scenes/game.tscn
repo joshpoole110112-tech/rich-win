@@ -86,7 +86,7 @@ position = Vector2(179, -114)
 player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1094012942]
-layer = 100
+layer = 2
 follow_viewport_enabled = true
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=129835050]
